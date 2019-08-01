@@ -1,4 +1,4 @@
-package com.mrtecks.shr;
+package com.mysuperhumanrace.shr;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;

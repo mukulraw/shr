@@ -1,4 +1,4 @@
-package com.mrtecks.shr;
+package com.mysuperhumanrace.shr;
 
 import org.junit.Test;
 

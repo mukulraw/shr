@@ -1,4 +1,4 @@
-package com.mrtecks.shr;
+package com.mysuperhumanrace.shr;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,10 +6,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.http.SslCertificate;
 import android.net.http.SslError;
 import android.os.Bundle;
-import android.util.Log;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
