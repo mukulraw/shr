@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
         mWebView = findViewById(R.id.webview);
         mWebView.setListener(this, this);
         mWebView.getSettings().setAppCacheEnabled(false);
-        mWebView.loadUrl("https://www.mysuperhumanrace.com/");
+        mWebView.loadUrl("https://www.mysuperhumanrace.com/login");
         mWebView.setGeolocationEnabled(true);
         mWebView.getSettings().setDomStorageEnabled(true);
         mWebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
