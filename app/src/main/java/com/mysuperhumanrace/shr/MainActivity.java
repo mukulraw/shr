@@ -1,10 +1,15 @@
 package com.mysuperhumanrace.shr;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.net.http.SslError;
 import android.os.Bundle;
@@ -12,6 +17,7 @@ import android.util.Log;
 import android.webkit.CookieManager;
 import android.webkit.SslErrorHandler;
 import android.webkit.ValueCallback;
+import android.webkit.WebSettings;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -22,6 +28,7 @@ import im.delight.android.webview.AdvancedWebView;
 
 public class MainActivity extends AppCompatActivity implements AdvancedWebView.Listener {
     private AdvancedWebView mWebView;
+//    private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements AdvancedWebView.L
 
         mWebView = findViewById(R.id.webview);
         mWebView.setListener(this, this);
-        mWebView.getSettings().setAppCacheEnabled(false);
+        mWebView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
         mWebView.loadUrl("https://www.mysuperhumanrace.com/login");
         mWebView.setGeolocationEnabled(true);
         mWebView.getSettings().setDomStorageEnabled(true);
