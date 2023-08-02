@@ -1,11 +1,14 @@
 package com.mysuperhumanrace.shr;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -31,17 +34,21 @@ public class Splash extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
-        if (hasPermissions(this, PERMISSIONS)) {
-
-            startApp();
+//        requestStoragePermission();
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+                == PackageManager.PERMISSION_GRANTED) {startApp();
+            // Permission is granted. You can access the location here.
+            // Start your location-related functionality.
         } else {
-            ActivityCompat.requestPermissions(this, PERMISSIONS, REQUEST_CODE_ASK_PERMISSIONS);
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CAMERA},
+                    REQUEST_CODE_ASK_PERMISSIONS);
         }
+
     }
 
     private static boolean hasPermissions(Context context, String... permissions) {
-        if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && context != null && permissions != null) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && context != null && permissions != null) {
             for (String permission : permissions) {
                 if (ActivityCompat.checkSelfPermission(context, permission) != PackageManager.PERMISSION_GRANTED) {
                     return false;
@@ -57,12 +64,13 @@ public class Splash extends AppCompatActivity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
         if (requestCode == REQUEST_CODE_ASK_PERMISSIONS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
             Log.d("permmm", "1");
 
-            if (hasPermissions(this, PERMISSIONS)) {
-
-                Log.d("permmm", "2");
+//            if (hasPermissions(this, PERMISSIONS)) {
+//
+//                Log.d("permmm", "2");
 
                 startApp();
 
@@ -90,7 +98,6 @@ public class Splash extends AppCompatActivity {
         }
 
     }
-
     private void startApp() {
         timer = new Timer();
         timer.schedule(new TimerTask() {
