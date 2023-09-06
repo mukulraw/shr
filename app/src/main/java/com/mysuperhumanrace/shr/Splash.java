@@ -48,7 +48,7 @@ public class Splash extends AppCompatActivity {
             appSignature();
         } else {
             ActivityCompat.requestPermissions(this,
-                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.CAMERA},
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA},
                     REQUEST_CODE_ASK_PERMISSIONS);
         }
 
@@ -70,7 +70,7 @@ public class Splash extends AppCompatActivity {
 
 //            Log.d("AppSignature", "SHA-1 Fingerprint: " + fingerprint.toString());
 
-            String embeddedSignature = "AC:4B:F8:0F:8B:F8:08:14:93:A9:B8:E6:FA:58:F4:3A:2B:48:0E:14:";
+            String embeddedSignature = "AC:4B:F8:0F:8B:F8:08:14:93:A9:B8:E6:FA:58:F4:3A:2B:48:0E:14";
 //            Log.d("AppSignature", "Embedded Signature: " + embeddedSignature);
 
             if (fingerprint.toString().equals(embeddedSignature)) {
@@ -109,6 +109,7 @@ public class Splash extends AppCompatActivity {
             startApp();
         }
     }
+
     private boolean checkForRootAccess() {
         StringBuilder detectionResults = new StringBuilder();
 
@@ -154,11 +155,11 @@ public class Splash extends AppCompatActivity {
 
         // Display the root detection results
         if (detectionResults.length() > 0) {
-            Toast.makeText(this, "Device may be rooted:\n" + detectionResults.toString(), Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "Device may be rooted:\n" + detectionResults.toString(), Toast.LENGTH_LONG).show();
             return true;
 
         } else {
-            Toast.makeText(this, "Device is not rooted", Toast.LENGTH_LONG).show();
+//            Toast.makeText(this, "Device is not rooted", Toast.LENGTH_LONG).show();
             return false;
 
         }
@@ -169,7 +170,7 @@ public class Splash extends AppCompatActivity {
         PackageManager packageManager = getPackageManager();
         List<ApplicationInfo> packages = packageManager.getInstalledApplications(
                 PackageManager.GET_META_DATA);
-        String[] rootCloakingAppPackageNames  = {   "com.devadvance.rootcloak",
+        String[] rootCloakingAppPackageNames = {"com.devadvance.rootcloak",
                 "com.devadvance.rootcloakplus",
                 "de.robv.android.xposed.installer",
                 "com.saurik.substrate",
@@ -194,6 +195,7 @@ public class Splash extends AppCompatActivity {
         return checkForBinary("su"); // function is available below
 
     }
+
     private boolean checkForBusyBoxBinary() {
         return checkForBinary("busybox");
     }
@@ -216,9 +218,10 @@ public class Splash extends AppCompatActivity {
 
         return false;
     }
+
     /**
      * @param filename - check for this existence of this
-     * file("su","busybox")
+     *                 file("su","busybox")
      * @return true if exists
      */
     private boolean checkForBinary(String filename) {
@@ -231,7 +234,8 @@ public class Splash extends AppCompatActivity {
         }
         return false;
     }
-    private String[] binaryPaths= {
+
+    private String[] binaryPaths = {
             "/data/local/",
             "/data/local/bin/",
             "/data/local/xbin/",
@@ -252,6 +256,7 @@ public class Splash extends AppCompatActivity {
     /**
      * A variation on the checking for SU, this attempts a 'which su'
      * different file system check for the su binary
+     *
      * @return true if su exists
      */
     private boolean checkSuExists() {
@@ -271,6 +276,7 @@ public class Splash extends AppCompatActivity {
             return false;
         }
     }
+
     private static boolean hasPermissions(Context context, String... permissions) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU && context != null && permissions != null) {
             for (String permission : permissions) {
@@ -290,7 +296,7 @@ public class Splash extends AppCompatActivity {
         if (requestCode == REQUEST_CODE_ASK_PERMISSIONS) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-            Log.d("permmm", "1");
+                Log.d("permmm", "1");
 
 //            if (hasPermissions(this, PERMISSIONS)) {
 //
@@ -321,6 +327,7 @@ public class Splash extends AppCompatActivity {
         }
 
     }
+
     private void startApp() {
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -328,12 +335,12 @@ public class Splash extends AppCompatActivity {
             public void run() {
 
 
-                Intent i = new Intent(Splash.this , MainActivity.class);
+                Intent i = new Intent(Splash.this, MainActivity.class);
                 startActivity(i);
                 finish();
 
             }
-        } , 1200);
+        }, 1200);
 
     }
 
