@@ -77,7 +77,7 @@ public class Splash extends AppCompatActivity {
                 Log.d("permmmkfjbdfkbndj", "1");
                 appPackageName();
             } else {
-                Log.d("permmm", "100000000000000000000000000");
+                Toast.makeText(this, "Signature not match", Toast.LENGTH_SHORT).show();
                 finish();
             }
         } catch (PackageManager.NameNotFoundException e) {
@@ -91,9 +91,9 @@ public class Splash extends AppCompatActivity {
     private void appPackageName() {
         PackageManager packageManager = getPackageManager();
         String installerPackageName = packageManager.getInstallerPackageName(getPackageName());
+        System.out.println(installerPackageName);
         if ("com.android.vending".equals(installerPackageName)) {
             RootDetectionActivity();
-            finish();
         } else {
             Toast.makeText(this, "This app was not installed from the Google Play Store. Proceed with caution.", Toast.LENGTH_SHORT).show();
             finish();
@@ -292,9 +292,6 @@ public class Splash extends AppCompatActivity {
 
             Log.d("permmm", "1");
 
-//            if (hasPermissions(this, PERMISSIONS)) {
-//
-//                Log.d("permmm", "2");
 
                 appSignature();
 
