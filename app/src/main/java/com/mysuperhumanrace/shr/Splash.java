@@ -77,7 +77,7 @@ public class Splash extends AppCompatActivity {
                 Log.d("permmmkfjbdfkbndj", "1");
                 appPackageName();
             } else {
-                Toast.makeText(this, "Signature not match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Signature did not match", Toast.LENGTH_SHORT).show();
                 finish();
             }
         } catch (PackageManager.NameNotFoundException e) {
