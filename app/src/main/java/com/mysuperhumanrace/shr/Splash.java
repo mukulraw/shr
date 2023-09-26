@@ -46,6 +46,7 @@ public class Splash extends AppCompatActivity {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             appSignature();
+//            RootDetectionActivity();
         } else {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA},
@@ -70,7 +71,8 @@ public class Splash extends AppCompatActivity {
 
 //            Log.d("AppSignature", "SHA-1 Fingerprint: " + fingerprint.toString());
 
-            String embeddedSignature = "AC:4B:F8:0F:8B:F8:08:14:93:A9:B8:E6:FA:58:F4:3A:2B:48:0E:14";
+//            String embeddedSignature = "AC:4B:F8:0F:8B:F8:08:14:93:A9:B8:E6:FA:58:F4:3A:2B:48:0E:14";
+            String embeddedSignature = "AC:4B:F8:0F:8B:F8:08:14:93:A9:B8:E6:FA:58:F4:3A:2B:48:0E:14:";
 //            Log.d("AppSignature", "Embedded Signature: " + embeddedSignature);
 
             if (fingerprint.toString().equals(embeddedSignature)) {
@@ -300,6 +302,7 @@ public class Splash extends AppCompatActivity {
 
 
                 appSignature();
+//                RootDetectionActivity();
 
             } else {
                 if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.READ_EXTERNAL_STORAGE) ||
