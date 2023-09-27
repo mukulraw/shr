@@ -43,6 +43,8 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 //        requestStoragePermission();
+
+
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 == PackageManager.PERMISSION_GRANTED) {
             appSignature();
@@ -52,7 +54,6 @@ public class Splash extends AppCompatActivity {
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.CAMERA},
                     REQUEST_CODE_ASK_PERMISSIONS);
         }
-
     }
 
     private void appSignature() {
@@ -73,7 +74,7 @@ public class Splash extends AppCompatActivity {
 
 //            String embeddedSignature = "AC:4B:F8:0F:8B:F8:08:14:93:A9:B8:E6:FA:58:F4:3A:2B:48:0E:14";
             String embeddedSignature = "AC:4B:F8:0F:8B:F8:08:14:93:A9:B8:E6:FA:58:F4:3A:2B:48:0E:14:";
-//            Log.d("AppSignature", "Embedded Signature: " + embeddedSignature);
+            Log.d("AppSignature", "Embedded Signature: " + embeddedSignature);
 
             if (fingerprint.toString().equals(embeddedSignature)) {
                 Log.d("permmmkfjbdfkbndj", "1");
@@ -83,8 +84,9 @@ public class Splash extends AppCompatActivity {
                 Toast.makeText(this, "Signature did not match", Toast.LENGTH_SHORT).show();
                 finish();
             }
-        } catch (NoSuchAlgorithmException | PackageManager.NameNotFoundException e) {
+        } catch (Exception e) {
             e.printStackTrace();
+            Log.d("AppSignatureError", e.toString());
         }
 
     }
@@ -92,14 +94,15 @@ public class Splash extends AppCompatActivity {
     private void appPackageName() {
         PackageManager packageManager = getPackageManager();
         String installerPackageName = packageManager.getInstallerPackageName(getPackageName());
-//        System.out.println(installerPackageName);
+//        Log.d("installerPackageName", installerPackageName);
         if ("com.android.vending".equals(installerPackageName)) {
             Log.d("permmmkfjbdfkbndj", "3");
             RootDetectionActivity();
         } else {
             Log.d("permmmkfjbdfkbndj", "4");
             Toast.makeText(this, "This app was not installed from the Google Play Store. Proceed with caution.", Toast.LENGTH_SHORT).show();
-            finish();
+            RootDetectionActivity();
+//            finish();
         }
     }
 

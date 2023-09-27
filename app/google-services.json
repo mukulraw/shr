@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "514134252864",
+    "project_id": "shr-android",
+    "storage_bucket": "shr-android.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:514134252864:android:6e2984724a0fac39892ea5",
+        "android_client_info": {
+          "package_name": "com.mysuperhumanrace.shr"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCAp_1Yt3IIBkpPHCYxisETW4IehBDiCI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
