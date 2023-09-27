@@ -69,7 +69,7 @@ public class Splash extends AppCompatActivity {
                 fingerprint.append(String.format("%02X:", b));
             }
 
-//            Log.d("AppSignature", "SHA-1 Fingerprint: " + fingerprint.toString());
+            Log.d("AppSignature", "SHA-1 Fingerprint: " + fingerprint.toString());
 
 //            String embeddedSignature = "AC:4B:F8:0F:8B:F8:08:14:93:A9:B8:E6:FA:58:F4:3A:2B:48:0E:14";
             String embeddedSignature = "AC:4B:F8:0F:8B:F8:08:14:93:A9:B8:E6:FA:58:F4:3A:2B:48:0E:14:";
@@ -79,13 +79,12 @@ public class Splash extends AppCompatActivity {
                 Log.d("permmmkfjbdfkbndj", "1");
                 appPackageName();
             } else {
+                Log.d("permmmkfjbdfkbndj", "2");
                 Toast.makeText(this, "Signature did not match", Toast.LENGTH_SHORT).show();
                 finish();
             }
-        } catch (PackageManager.NameNotFoundException e) {
+        } catch (NoSuchAlgorithmException | PackageManager.NameNotFoundException e) {
             e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
         }
 
     }
@@ -93,10 +92,12 @@ public class Splash extends AppCompatActivity {
     private void appPackageName() {
         PackageManager packageManager = getPackageManager();
         String installerPackageName = packageManager.getInstallerPackageName(getPackageName());
-        System.out.println(installerPackageName);
+//        System.out.println(installerPackageName);
         if ("com.android.vending".equals(installerPackageName)) {
+            Log.d("permmmkfjbdfkbndj", "3");
             RootDetectionActivity();
         } else {
+            Log.d("permmmkfjbdfkbndj", "4");
             Toast.makeText(this, "This app was not installed from the Google Play Store. Proceed with caution.", Toast.LENGTH_SHORT).show();
             finish();
         }
